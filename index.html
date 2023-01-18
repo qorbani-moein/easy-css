@@ -1,0 +1,38 @@
+const notes = Array.from(document.querySelectorAll('.note'))
+notes.forEach(note => {
+  console.log(generateQuerySelector(note))
+})
+
+function generateQuerySelector (el) {
+  if (el.tagName.toLowerCase() == "html")
+      return "HTML";
+  var str = el.tagName;
+  str += (el.id != "") ? "#" + el.id : "";
+  if (el.className) {
+      var classes = el.className.split(/\s/);
+      for (var i = 0; i < classes.length; i++) {
+          str += "." + classes[i]
+      }
+  }
+  return generateQuerySelector(el.parentNode) + " > " + str;
+}
+
+<div class="content">
+  <div class="primary">
+    <div class="article">
+      <div class="note">
+      </div>
+    </div>
+  </div>
+  <div class="secondary">
+    <div class="aside">
+      <div class="note">
+      </div>
+    </div>
+  </div>
+  <div class="note">
+  </div>
+  <div id="contact-form">
+    <div class="note"></div>
+  </div>
+</div>
