@@ -7,23 +7,20 @@
     <title>Test easy-css</title>
 
     <script>
-      const notes = Array.from(document.querySelectorAll(".note"));
-      notes.forEach((note) => {
-        console.log(generateQuerySelector(note));
-      });
 
-      function generateQuerySelector(el) {
-        if (el.tagName.toLowerCase() == "html") return "HTML";
-        var str = el.tagName;
-        str += el.id != "" ? "#" + el.id : "";
-        if (el.className) {
-          var classes = el.className.split(/\s/);
-          for (var i = 0; i < classes.length; i++) {
-            str += "." + classes[i];
-          }
-        }
-        return generateQuerySelector(el.parentNode) + " > " + str;
-      }
+    const handler = function(e) {
+    const elem = e.target;
+    }
+    document.addEventListener('click', handler, false);
+
+
+    const target = e.target;
+    for (let i=0,elems=document.querySelectorAll('.note');i<elems.length;i++) {
+    if(elems[i] === target) {
+        console(true);
+    }
+
+
     </script>
   </head>
   <body>
